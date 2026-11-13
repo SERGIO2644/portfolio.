@@ -1,0 +1,351 @@
+/* =========================================================
+   Portfolio – Adam Keyes
+   Maquetación MOBILE FIRST:
+     · Estilos base  → móvil
+     · min-width: 768px  → tablet
+     · min-width: 1200px → escritorio
+   ========================================================= */
+:root {
+  --black: #151515;
+  --green: #4EE1A0;
+  --dark-grey: #242424;
+  --grey: #d9d9d9;
+  --white: #FFFFFF;
+  --red: #FF6F5B;
+  --font: "Space Grotesk", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.container {
+  width: 90%;
+  max-width: 1110px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ---------- Tipografía (móvil) ---------- */
+h1 { font-size: 40px; line-height: 40px; letter-spacing: -1.14px; font-weight: 700; }
+h2 { font-size: 32px; line-height: 40px; letter-spacing: -1px; font-weight: 700; }
+h3 { font-size: 20px; line-height: 30px; font-weight: 700; text-transform: uppercase; }
+p  { color: var(--grey); }
+
+/* ---------- Botón / enlace subrayado ---------- */
+.btn {
+  display: inline-block;
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 10px;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 2.29px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .2s;
+}
+.btn:hover, .btn:focus-visible { color: var(--green); }
+
+/* ---------- Iconos sociales (SVG) ---------- */
+.social { display: flex; gap: 24px; align-items: center; }
+.social svg { width: 24px; height: 24px; fill: var(--white); transition: fill .2s; }
+.social a:hover svg, .social a:focus-visible svg { fill: var(--green); }
+
+.logo { font-size: 24px; font-weight: 700; letter-spacing: -.33px; }
+
+/* ---------- Anillos decorativos ---------- */
+.rings {
+  position: absolute;
+  width: 530px;
+  height: 129px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 530 129' fill='none' stroke='%23FFFFFF' stroke-width='1' opacity='.4'%3E%3Cellipse cx='265' cy='20' rx='264' ry='19'/%3E%3Cellipse cx='265' cy='38' rx='264' ry='19'/%3E%3Cellipse cx='265' cy='56' rx='264' ry='19'/%3E%3Cellipse cx='265' cy='74' rx='264' ry='19'/%3E%3Cellipse cx='265' cy='92' rx='264' ry='19'/%3E%3Cellipse cx='265' cy='109' rx='264' ry='19'/%3E%3C/svg%3E") no-repeat center / contain;
+  z-index: 0;
+}
+
+/* =============== CABECERA =============== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+  z-index: 3;
+}
+
+/* =============== HERO =============== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 80px;
+}
+.hero__img-box {
+  position: relative;
+  width: 174px;
+  height: 383px;
+  margin: -110px auto 40px;      /* la foto sube por detrás de la cabecera */
+  background: var(--dark-grey);
+  z-index: 1;
+}
+.hero__img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+.circle {
+  position: absolute;
+  right: -110px;
+  bottom: 60px;
+  width: 129px;
+  height: 129px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+}
+
+.hero__text { position: relative; z-index: 2; }
+.hero__text h1 { margin-bottom: 24px; }
+.hero__text p  { margin: 0 auto 24px; max-width: 445px; }
+
+.underline {
+  background: linear-gradient(var(--green), var(--green)) no-repeat left bottom / 100% 4px;
+  padding-bottom: 4px;
+}
+.rings--hero { left: -350px; top: 100px; }
+
+/* =============== SKILLS =============== */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+  text-align: center;
+  border-top: 1px solid var(--white);
+  padding: 40px 0 80px;
+}
+.rings--skills { right: -400px; bottom: 120px; }
+
+/* =============== PROYECTOS =============== */
+.projects__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.projects__head h2 { font-size: 40px; line-height: 40px; }
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  padding-bottom: 80px;
+}
+
+.project__img { position: relative; margin-bottom: 20px; overflow: hidden; }
+.project__img img { width: 100%; aspect-ratio: 540 / 400; object-fit: cover; }
+
+/* En móvil y tablet no hay hover: los botones se ven debajo */
+.project__overlay { display: none; }
+.project h3 { margin-bottom: 7px; }
+.tags { display: flex; gap: 18px; color: var(--grey); text-transform: uppercase; }
+.project__links { display: flex; gap: 30px; margin-top: 20px; }
+
+/* =============== CONTACTO / FOOTER =============== */
+.footer { background: var(--dark-grey); padding-top: 60px; }
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--white);
+}
+.contact__text h2 { font-size: 40px; line-height: 40px; margin-bottom: 20px; }
+.contact__text p  { max-width: 445px; margin: 0 auto 20px; }
+.rings--contact { display: none; left: -330px; bottom: 30px; }
+
+.form { display: flex; flex-direction: column; gap: 32px; position: relative; z-index: 1; text-align: left; }
+.field { position: relative; }
+
+.form input,
+.form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  padding: 0 24px 16px;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -.22px;
+  resize: none;
+}
+.form input::placeholder,
+.form textarea::placeholder { color: var(--white); opacity: .5; text-transform: uppercase; }
+.form input:hover,
+.form textarea:hover,
+.form input:focus,
+.form textarea:focus { outline: none; border-bottom-color: var(--green); }
+
+.error-msg {
+  display: none;
+  text-align: right;
+  color: var(--red);
+  font-size: 12px;
+  margin-top: 6px;
+}
+.field.invalid input,
+.field.invalid textarea { border-bottom-color: var(--red); }
+.field.invalid .error-msg { display: block; }
+.field.invalid::after {               /* icono de error */
+  content: "!";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 24px; height: 24px;
+  border: 1px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+.form .btn { align-self: flex-end; }
+
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0 60px;
+}
+
+/* =========================================================
+   TABLET (≥ 768px)
+   ========================================================= */
+@media (min-width: 768px) {
+  body { font-size: 18px; }
+  h1 { font-size: 72px; line-height: 72px; letter-spacing: -2px; }
+  h2 { font-size: 48px; line-height: 56px; letter-spacing: -1.5px; }
+  h3 { font-size: 24px; line-height: 32px; }
+
+  .logo { font-size: 32px; letter-spacing: -.44px; }
+  .social { gap: 32px; }
+
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 39px;
+  }
+
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    min-height: 600px;
+    margin-top: -100px;
+    margin-bottom: 60px;
+    padding-bottom: 0;
+  }
+  .hero__img-box {
+    position: absolute;
+    top: 0;
+    right: -5.5%;
+    width: 322px;
+    height: 600px;
+    margin: 0;
+  }
+  .circle { left: -64px; right: auto; bottom: 120px; }
+  .hero__text { max-width: 520px; padding-top: 120px; }
+  .hero__text h1 { margin-bottom: 43px; }
+  .hero__text p { margin: 0 0 66px; }
+  .rings--hero { left: -420px; top: 230px; }
+
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+    row-gap: 52px;
+    padding: 52px 0 100px;
+  }
+  .skills h2 { margin-bottom: 14px; }
+
+  .projects__head { margin-bottom: 60px; }
+  .projects__head h2,
+  .contact__text h2 { font-size: 72px; line-height: 72px; letter-spacing: -2px; }
+
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 60px;
+    padding-bottom: 100px;
+  }
+
+  .footer { padding-top: 84px; }
+  .contact__text h2 { margin-bottom: 36px; }
+  .rings--contact { display: block; }
+
+  .footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 47px 0 92px;
+  }
+}
+
+/* =========================================================
+   ESCRITORIO (≥ 1200px)
+   ========================================================= */
+@media (min-width: 1200px) {
+  h1 { font-size: 88px; line-height: 88px; letter-spacing: -2.5px; }
+
+  .hero { min-height: 720px; margin-bottom: 80px; }
+  .hero__img-box { right: 0; width: 445px; height: 720px; }
+  .hero__text { max-width: 720px; }
+  .hero__text p { max-width: 445px; }
+  .rings--hero { left: -330px; }
+
+  .skills { grid-template-columns: repeat(3, 1fr); padding: 72px 0 140px; }
+
+  .projects__head { margin-bottom: 80px; }
+  .projects__head h2,
+  .contact__text h2 { font-size: 88px; line-height: 88px; letter-spacing: -2.5px; }
+
+  .projects__grid { column-gap: 30px; row-gap: 70px; padding-bottom: 140px; }
+
+  /* Hover sobre la imagen del proyecto (solo escritorio) */
+  .project__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .project__img:hover .project__overlay,
+  .project__img:focus-within .project__overlay { opacity: 1; }
+  .project__links { display: none; }
+
+  .contact { grid-template-columns: 1fr 1fr; text-align: left; padding-bottom: 92px; }
+  .contact__text p { margin: 0; }
+}
